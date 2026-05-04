@@ -44,20 +44,20 @@ La aplicación cuenta con una interfaz gráfica interactiva que permite visualiz
 ```
 ProyectoFinal/
 ├── Frontend/
-│   └── index.html                  # Interfaz gráfica (HTML, CSS, JS)
+│   └── index.html                       # Interfaz gráfica (HTML, CSS, JS)
 │   ├── index.css
 |   ├── index.js
 |
 ├── Backend/
-│   ├── main.py                     # Servidor FastAPI (punto de entrada)
+│   ├── main.py                          # Servidor FastAPI (punto de entrada)
 │   ├── models/
-│   │   └── input_model.py          # Modelo de datos de entrada (Pydantic)
+│   │   └── input_model.py               # Modelo de datos de entrada (Pydantic)
 │   ├── services/
-│   │   ├── grammar_service.py      # Definición de gramáticas y parser
+│   │   ├── grammar_service.py           # Definición de gramáticas y parser
 │   │   ├── input_processing_service.py  # Preprocesamiento de la expresión
-│   │   ├── derivation_service.py   # Generación de derivaciones
-│   │   └── tree_service.py         # Construcción del árbol y AST
-│   └── __init__.py                 # (opcional) Para manejo de módulos
+│   │   ├── derivation_service.py        # Generación de derivaciones
+│   │   └── tree_service.py              # Construcción del árbol y AST
+│   └── __init__.py                      # (opcional) Para manejo de módulos
 │
 └── README.md
 ```
