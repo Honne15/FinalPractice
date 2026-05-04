@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analizador de Gramáticas — ST0244 EAFIT</title>
+<head>
+    <link rel="stylesheet" href="/Frontend/index.css">
+</head>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<header>
+  <div class="header-left">
+    <div class="logo-mark">G</div>
+    <div>
+      <div class="header-title">Analizador de Gramáticas</div>
+      <div class="header-sub">ST0244 — Lenguajes de Programación · EAFIT</div>
+    </div>
+  </div>
+  <div class="header-badge">CFG · Derivación · AST</div>
+</header>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <!-- Conexión al servidor -->
+    <div>
+      <div class="field-label">URL del servidor</div>
+      <div class="server-row">
+        <input type="text" id="server-url" value="http://localhost:8000">
+      </div>
+    </div>
+
+    <!-- Tipo de expresión -->
+    <div>
+      <div class="field-label">Tipo de expresión</div>
+      <div class="seg">
+        <button class="seg-btn active" id="btn-infija" onclick="setType('infija')">Infija</button>
+        <button class="seg-btn" id="btn-prefija" onclick="setType('prefija')">Prefija</button>
+      </div>
+    </div>
+
+    <!-- Gramática activa -->
+    <div>
+      <div class="field-label">Gramática activa</div>
+      <div class="grammar-card" id="grammar-display">
+        <!-- populated by JS -->
+      </div>
+    </div>
+
+    <!-- Expresión -->
+    <div>
+      <div class="field-label">Expresión</div>
+      <textarea id="expr-input" rows="3" placeholder="Ej: 4 + ( a - b ) * x"></textarea>
+      <div class="examples" id="examples-row">
+        <!-- populated by JS -->
+      </div>
+    </div>
+
+    <!-- Tipo de derivación -->
+    <div>
+      <div class="field-label">Tipo de derivación</div>
+      <div class="seg">
+        <button class="seg-btn active" id="btn-izq" onclick="setDeriv('izquierda')">Por la izquierda</button>
+        <button class="seg-btn" id="btn-der" onclick="setDeriv('derecha')">Por la derecha</button>
+      </div>
+    </div>
+
+    <button class="run-btn" id="analyze-btn" onclick="analyze()">
+      <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M3 2.5l9 5-9 5V2.5z" fill="currentColor"/></svg>
+      Analizar
+    </button>
+
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+    <div class="tabs">
+      <button class="tab-btn active" onclick="showTab(0)">
+        Derivación <span class="tab-count" id="count-deriv">—</span>
+      </button>
+      <button class="tab-btn" onclick="showTab(1)">
+        Árbol de derivación
+      </button>
+      <button class="tab-btn" onclick="showTab(2)">
+        AST
+      </button>
+    </div>
+
+    <div class="panel active" id="panel-0">
+      <div class="empty" id="empty-0">
+        <div class="empty-icon">⊢</div>
+        <span>Ingresa una expresión y presiona Analizar</span>
+      </div>
+      <div id="deriv-content" style="display:none;flex-direction:column;gap:4px"></div>
+    </div>
+
+    <div class="panel" id="panel-1">
+      <div class="empty" id="empty-1">
+        <div class="empty-icon">⌥</div>
+        <span>El árbol de derivación aparecerá aquí</span>
+      </div>
+      <div class="tree-wrap" id="tree-canvas" style="display:none"></div>
+    </div>
+
+    <div class="panel" id="panel-2">
+      <div class="empty" id="empty-2">
+        <div class="empty-icon">⎇</div>
+        <span>El AST aparecerá aquí</span>
+      </div>
+      <div class="tree-wrap" id="ast-canvas" style="display:none"></div>
+    </div>
+
+  </main>
+</div>
+<script src="/Frontend/index.js"></script>
+</body>
+</html>
